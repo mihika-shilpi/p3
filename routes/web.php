@@ -11,6 +11,4 @@
 |
 */
 
-Route::get('/', function () {
-    return "yo";
-});
+Route::get('/', 'SigController@index');
