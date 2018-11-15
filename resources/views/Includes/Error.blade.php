@@ -4,8 +4,8 @@
 <div class="card-dark no-shadow no-margin small-pad">
     <div class="error">
         <ul>
-            @foreach ($errors as $error)
-            <li>{{ $error }}</li>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
             @endforeach
         </ul>
     </div>

@@ -20,7 +20,7 @@
                 <h2>Your Information</h2>
                 <br>
 
-                <form method="POST" action="/generate"
+                <form method="GET" action="/attempt"
                       class="uk-form-stacked">
 
                     {{ csrf_field() }}
@@ -41,10 +41,10 @@
                         <select class="uk-select" name="title">
                             @foreach ($jobs AS $key => $value)
                                 <option value="{{ $value }}"
-                                {{--@if (isset('title') && $value === ['title'])--}}
-                                    {{--{{'selected'}}--}}
-                                        {{--@endif>--}}
-                                >
+                                        @if(isset($title) && $value === [$title])
+                                        {{'selected'}}
+                                        @endif>
+
                                     {{ $key }}
                                 </option>
                             @endforeach
@@ -52,7 +52,7 @@
                         </select>
                     </label>
 
-                    <label> <input class="uk-checkbox" type="checkbox" name="ifwork" value="ifwork">
+                    <label> <input class="uk-checkbox" type="checkbox" name="workConfirmation" value="true">
                         I confirm that I work at Ajit Shilpi's Office and I am aware that this tool is proprietary.
                     </label>
 
@@ -60,6 +60,7 @@
                     <button type='submit' class="primary" value="submit-true" name="Generate">
                         Generate
                     </button>
+                    <input type='hidden' name='submitted' value='1'>
 
                 </form>
             </div>
@@ -69,36 +70,51 @@
         <div class="card-light col-span-3-6">
             <div>
 
-                @if (!isset($_POST['Generate']))
+                @if (!isset($submitted)&& count($errors) === 0)
                     <h1>Signature Code</h1>
                     <p>Once you have correctly filled out your form, your html signature code will appear here, and
                         you
                         will be able to preview your signature below to check it before you use it. </p>
+
                 @endif
 
-                @if ((isset($_POST['Generate'])) && !isset($_POST['ifwork']) || (isset($_POST['Generate'])) && $_POST['ifwork'] = "")
-                    <h1>Not Cool!</h1>
-                    <p>You Must work at Ajit Shilpi Architects to use this. </p>
-                @endif
+                    @if($errors->get('workConfirmation'))
+                        <h1>Not Cool!</h1>
+                        <p>You Must work at Ajit Shilpi Architects to use this. </p>
+                    @endif
+
 
                 @if(count($errors) > 0)
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                @endif
+                        <h1>Whoops!</h1>
+                        <p>Looks like you mis-filled the form. Check: </p>
+                        </div>
+                        <div class="card-dark no-shadow no-margin small-pad">
+                            <div class="error">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
 
-                @if (isset($_POST['Generate']) && !$form->hasErrors && isset($_POST['ifwork']))
-                    @include("includes/FormFilledCode.php")
-                @endif
+            @endif
 
-            </div>
+
+
+
+                @if(isset($submitted) && count($errors) === 0)
+                        @include("Includes/FormFilledCode")
+
+                    @endif
+
+
         </div>
     </div>
+    </div>
 
-    @if (isset($_POST['Generate']) && !$form->hasErrors && isset($_POST['ifwork']))
-        @include("includes/FormFilledDisplay.php")
+    @if (isset($submitted) && count($errors) === 0)
+        @include("Includes/FormFilledDisplay")
     @endif
 
 @endsection

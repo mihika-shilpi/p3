@@ -13,4 +13,4 @@
 
 Route::get('/', 'SigController@index');
 
-Route::post('/', 'SigController@signed');
+Route::get('/attempt', 'SigController@attempt');
