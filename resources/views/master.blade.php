@@ -15,7 +15,7 @@
 <body>
 <header>
 
-    <span tabindex="0" class="hamburger"> <img src="Images/menu.svg" alt="menu"></span>
+    <span tabindex="0" class="hamburger"> <img src="/images/menu.svg" alt="menu"></span>
 
     <nav class="move">
 
@@ -25,7 +25,7 @@
             </ul>
         </a>
 
-        <img src="Images/AjitShilpi-01.png" alt="Ajit Shilpi">
+        <img src="/images/AjitShilpi-01.png" alt="Ajit Shilpi">
     </nav>
 
 </header>
