@@ -13,7 +13,7 @@
                         <a href="tel:
                             +91{{ $phone?? '' }}" style="color:#776869 !important; text-decoration:none !important;">m: +91 {{ $phone ?? '' }}</a>
                         <hr style="border-top:0.5px solid #776869; display:block; clear:both; margin-top: 4px; margin-bottom: 4px;">
-                        <img src="Images/AjitShilpi-01.png"
+                        <img src="/Images/AjitShilpi-01.png"
                              style="float:left; clear:left; height:5rem; width: auto; margin-right:0.7rem; margin-bottom:0.5rem;">
                         <span style="float:left; clear:right;  margin-bottom:0.5rem;
                             border-left:0.5px solid #776869; padding-left:.5rem;
