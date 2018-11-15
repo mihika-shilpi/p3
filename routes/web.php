@@ -12,3 +12,5 @@
 */
 
 Route::get('/', 'SigController@index');
+
+Route::post('/', 'SigController@signed');
