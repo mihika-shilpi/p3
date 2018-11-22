@@ -77,3 +77,4 @@ Is there any code in this file that should be happening in a Controller?
 
 ## 6. Misc
 + I think that even if the project was simple, it might have been nice to bother with something simple like the submit message calling me by my name rather than email ID. Making it a little more...believable, even if it was a field above the required. 
++ If CSS/design isn't your thing, I think that's fine. But we are allowed to use frameworks...why not?
